@@ -1,0 +1,426 @@
+{
+  "source": "Cantina SENAI - App Offline Responsivo (Completo com Imagens)",
+  "packaging_fee_cents": 150,
+  "categories": [
+    "Lanches",
+    "Refeições"
+  ],
+  "products": [
+    {
+      "id": "lanches-pao-com-manteiga",
+      "category": "Lanches",
+      "name": "Pão com manteiga",
+      "price_cents": 650,
+      "description": "Pão francês fresquinho e crocante passado na manteiga cremosa.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/pao-manteiga.jpg"
+    },
+    {
+      "id": "lanches-pao-com-manteiga-chapa",
+      "category": "Lanches",
+      "name": "Pão com manteiga (na chapa)",
+      "price_cents": 650,
+      "description": "Pão francês tostado na chapa com manteiga derretida até ficar dourado e crocante.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/pao-manteiga-chapa.jpg"
+    },
+    {
+      "id": "lanches-pao-com-requeijao",
+      "category": "Lanches",
+      "name": "Pão com requeijão",
+      "price_cents": 850,
+      "description": "Pão francês crocante recheado com camada generosa de requeijão cremoso.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/pao-requeijao.jpg"
+    },
+    {
+      "id": "lanches-pao-com-manteiga-requeijao",
+      "category": "Lanches",
+      "name": "Pão com manteiga + requeijão",
+      "price_cents": 850,
+      "description": "Pão francês quentinho com dupla camada de manteiga e requeijão cremoso.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/pao-manteiga-requeijao.jpg"
+    },
+    {
+      "id": "lanches-pao-com-ovo",
+      "category": "Lanches",
+      "name": "Pão com ovo",
+      "price_cents": 900,
+      "description": "Pão francês crocante com ovo frito na chapa na hora e toque de tempero verde.",
+      "allergens": [
+        "glúten",
+        "ovo"
+      ],
+      "image_url": "./assets/pao-ovo.jpg"
+    },
+    {
+      "id": "lanches-pao-com-ovo-salada",
+      "category": "Lanches",
+      "name": "Pão com ovo + salada",
+      "price_cents": 1100,
+      "description": "Pão francês recheado com ovo frito na chapa, folhas verdes frescas, tomate cereja e pepino.",
+      "allergens": [
+        "glúten",
+        "ovo"
+      ],
+      "image_url": "./assets/pao-ovo-salada.jpg"
+    },
+    {
+      "id": "lanches-queijo-quente",
+      "category": "Lanches",
+      "name": "Queijo quente",
+      "price_cents": 1800,
+      "description": "Pão especial grelhado na chapa com dupla camada de queijo muçarela derretido.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/queijo-quente.jpg"
+    },
+    {
+      "id": "lanches-queijo-quente-com-tomate",
+      "category": "Lanches",
+      "name": "Queijo quente com tomate",
+      "price_cents": 1800,
+      "description": "Pão grelhado na chapa com queijo derretido e rodelas frescas de tomate.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/queijo-quente-tomate.jpg"
+    },
+    {
+      "id": "lanches-misto-quente",
+      "category": "Lanches",
+      "name": "Misto quente",
+      "price_cents": 1800,
+      "description": "Pão de forma tostado na manteiga com fatias generosas de presunto cozido e queijo derretido.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/misto-quente.jpg"
+    },
+    {
+      "id": "lanches-misto-frio",
+      "category": "Lanches",
+      "name": "Misto frio",
+      "price_cents": 1800,
+      "description": "Pão macio servido frio com presunto fatiado, queijo muçarela e toque leve de maionese.",
+      "allergens": [
+        "glúten",
+        "lactose",
+        "ovo"
+      ],
+      "image_url": "./assets/misto-quente.jpg"
+    },
+    {
+      "id": "lanches-bauru",
+      "category": "Lanches",
+      "name": "Bauru",
+      "price_cents": 1800,
+      "description": "Pão baguete crocante recheado com rosbife fatiado, queijo derretido, rodelas de tomate e picles.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/bauru.jpg"
+    },
+    {
+      "id": "lanches-americano",
+      "category": "Lanches",
+      "name": "Americano",
+      "price_cents": 2000,
+      "description": "Lanche completo no pão brioche com hambúrguer artesanal, queijo, ovo frito, alface, tomate e molho especial.",
+      "allergens": [
+        "glúten",
+        "lactose",
+        "ovo"
+      ],
+      "image_url": "./assets/americano.jpg"
+    },
+    {
+      "id": "lanches-hamburguer",
+      "category": "Lanches",
+      "name": "Hambúrguer",
+      "price_cents": 1400,
+      "description": "Pão brioche selado, hambúrguer de carne bovina 150g suculento, alface, tomate e molho da casa.",
+      "allergens": [
+        "glúten",
+        "ovo"
+      ],
+      "image_url": "./assets/x-salada.jpg"
+    },
+    {
+      "id": "lanches-x-burguer",
+      "category": "Lanches",
+      "name": "X-Burguer",
+      "price_cents": 1800,
+      "description": "Pão brioche, hambúrguer artesanal 150g, queijo prato derretido e maionese temperada.",
+      "allergens": [
+        "glúten",
+        "lactose",
+        "ovo"
+      ],
+      "image_url": "./assets/x-salada.jpg"
+    },
+    {
+      "id": "lanches-x-egg",
+      "category": "Lanches",
+      "name": "X-Egg",
+      "price_cents": 2000,
+      "description": "Hambúrguer artesanal 150g, queijo derretido, ovo frito com gema cremosa, alface e tomate.",
+      "allergens": [
+        "glúten",
+        "lactose",
+        "ovo"
+      ],
+      "image_url": "./assets/x-egg.jpg"
+    },
+    {
+      "id": "lanches-x-salada",
+      "category": "Lanches",
+      "name": "X-Salada",
+      "price_cents": 2000,
+      "description": "Hambúrguer artesanal 150g, queijo derretido, alface crespa, tomate fresco e molho especial.",
+      "allergens": [
+        "glúten",
+        "lactose",
+        "ovo"
+      ],
+      "image_url": "./assets/x-salada.jpg"
+    },
+    {
+      "id": "lanches-x-salada-egg",
+      "category": "Lanches",
+      "name": "X-Salada Egg",
+      "price_cents": 2200,
+      "description": "Hambúrguer artesanal 150g, queijo, ovo na chapa, alface, tomate, picles e molho especial.",
+      "allergens": [
+        "glúten",
+        "lactose",
+        "ovo"
+      ],
+      "image_url": "./assets/americano.jpg"
+    },
+    {
+      "id": "lanches-x-bacon",
+      "category": "Lanches",
+      "name": "X-Bacon",
+      "price_cents": 2300,
+      "description": "Hambúrguer artesanal 150g, tiras generosas de bacon crocante, queijo cheddar derretido, alface, tomate e picles.",
+      "allergens": [
+        "glúten",
+        "lactose",
+        "ovo"
+      ],
+      "image_url": "./assets/x-bacon.jpg"
+    },
+    {
+      "id": "lanches-churrasco",
+      "category": "Lanches",
+      "name": "Churrasco",
+      "price_cents": 2000,
+      "description": "Tiras de carne bovina grelhadas na chapa no pão baguete crocante.",
+      "allergens": [
+        "glúten"
+      ],
+      "image_url": "./assets/bauru.jpg"
+    },
+    {
+      "id": "lanches-churrasco-com-queijo",
+      "category": "Lanches",
+      "name": "Churrasco com queijo",
+      "price_cents": 2400,
+      "description": "Tiras de carne bovina grelhadas com queijo muçarela derretido no pão baguete.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/bauru.jpg"
+    },
+    {
+      "id": "lanches-churrasco-com-queijo-salada",
+      "category": "Lanches",
+      "name": "Churrasco com queijo + salada",
+      "price_cents": 2600,
+      "description": "Carne bovina grelhada, queijo derretido, alface, tomate e picles no pão baguete.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/bauru.jpg"
+    },
+    {
+      "id": "lanches-file-de-frango",
+      "category": "Lanches",
+      "name": "Filé de frango",
+      "price_cents": 1700,
+      "description": "Peito de frango grelhado e temperado servido no pão francês ou baguete.",
+      "allergens": [
+        "glúten"
+      ],
+      "image_url": "./assets/bauru.jpg"
+    },
+    {
+      "id": "lanches-file-de-frango-com-queijo",
+      "category": "Lanches",
+      "name": "Filé de frango com queijo",
+      "price_cents": 1900,
+      "description": "Filé de frango grelhado coberto com queijo derretido no pão crocante.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/bauru.jpg"
+    },
+    {
+      "id": "lanches-file-de-frango-com-queijo-salada",
+      "category": "Lanches",
+      "name": "Filé de frango com queijo + salada",
+      "price_cents": 2100,
+      "description": "Filé de frango grelhado, queijo derretido, alface fresca e tomate no pão.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/bauru.jpg"
+    },
+    {
+      "id": "lanches-calabresa",
+      "category": "Lanches",
+      "name": "Calabresa",
+      "price_cents": 1700,
+      "description": "Linguiça calabresa fatiada e acebolada na chapa no pão baguete.",
+      "allergens": [
+        "glúten"
+      ],
+      "image_url": "./assets/bauru.jpg"
+    },
+    {
+      "id": "lanches-calabresa-com-queijo",
+      "category": "Lanches",
+      "name": "Calabresa com queijo",
+      "price_cents": 1900,
+      "description": "Linguiça calabresa acebolada com queijo derretido no pão baguete.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/bauru.jpg"
+    },
+    {
+      "id": "lanches-calabresa-com-queijo-salada",
+      "category": "Lanches",
+      "name": "Calabresa com queijo + salada",
+      "price_cents": 2100,
+      "description": "Calabresa acebolada, queijo derretido, alface e tomate no pão baguete.",
+      "allergens": [
+        "glúten",
+        "lactose"
+      ],
+      "image_url": "./assets/bauru.jpg"
+    },
+    {
+      "id": "refeicoes-amigao-ovo",
+      "category": "Refeições",
+      "name": "Amigão com ovo",
+      "price_cents": 1650,
+      "description": "Prato econômico bem servido com arroz branco soltinho, feijão carioca temperado com cheiro-verde e ovo frito na hora.",
+      "allergens": [
+        "ovo"
+      ],
+      "image_url": "./assets/amigao-ovo.jpg"
+    },
+    {
+      "id": "refeicoes-amigao-steak",
+      "category": "Refeições",
+      "name": "Amigão com steak de frango",
+      "price_cents": 1650,
+      "description": "Arroz branco, feijão carioca temperado, batata frita crocante e salada fresca de alface, pepino e cenoura ralada.",
+      "allergens": [],
+      "image_url": "./assets/amigao-salada-fritas.jpg"
+    },
+    {
+      "id": "refeicoes-amigao-strogonoff",
+      "category": "Refeições",
+      "name": "Amigão com strogonoff",
+      "price_cents": 1650,
+      "description": "Arroz branco soltinho, batata palha crocante e strogonoff cremoso de frango com champignon e cheiro-verde.",
+      "allergens": [
+        "lactose"
+      ],
+      "image_url": "./assets/amigao-strogonoff.jpg"
+    },
+    {
+      "id": "refeicoes-comercial-bisteca",
+      "category": "Refeições",
+      "name": "Comercial com Bisteca",
+      "price_cents": 2800,
+      "description": "Bisteca suína grelhada suculenta, porção generosa de arroz branco, batata frita crocante e salada de alface e tomate.",
+      "allergens": [],
+      "image_url": "./assets/comercial-bisteca.jpg"
+    },
+    {
+      "id": "refeicoes-comercial-calabresa-defumada",
+      "category": "Refeições",
+      "name": "Comercial com Calabresa defumada",
+      "price_cents": 2800,
+      "description": "Rodelas de calabresa defumada douradas com cebola, arroz branco, batata frita crocante e salada de alface e tomate.",
+      "allergens": [],
+      "image_url": "./assets/comercial-calabresa.jpg"
+    },
+    {
+      "id": "refeicoes-comercial-contrafile",
+      "category": "Refeições",
+      "name": "Comercial com Contrafilé",
+      "price_cents": 3200,
+      "description": "Bife de contrafilé grelhado no ponto, arroz branco, porção de batata frita e salada fresca de alface e tomate.",
+      "allergens": [],
+      "image_url": "./assets/comercial-contrafile.jpg"
+    },
+    {
+      "id": "refeicoes-comercial-file-frango",
+      "category": "Refeições",
+      "name": "Comercial com Filé de frango",
+      "price_cents": 2800,
+      "description": "Filé de peito de frango grelhado com ervas, arroz branco, batata frita sequinha e salada de alface e tomate.",
+      "allergens": [],
+      "image_url": "./assets/comercial-frango.jpg"
+    },
+    {
+      "id": "refeicoes-comercial-linguica-toscana",
+      "category": "Refeições",
+      "name": "Comercial com Linguiça toscana",
+      "price_cents": 2800,
+      "description": "Linguiças toscanas assadas e douradas na chapa, arroz branco soltinho, batata frita crocante e salada de alface e tomate.",
+      "allergens": [],
+      "image_url": "./assets/comercial-linguica.jpg"
+    },
+    {
+      "id": "refeicoes-comercial-omelete",
+      "category": "Refeições",
+      "name": "Comercial com Omelete",
+      "price_cents": 2800,
+      "description": "Omelete fofinho recheado com queijo e ervas, arroz branco, batata frita e salada fresca.",
+      "allergens": [
+        "ovo",
+        "lactose"
+      ],
+      "image_url": "./assets/amigao-salada-fritas.jpg"
+    }
+  ]
+}

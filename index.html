@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#6B1220" />
+  <meta name="description" content="Cardápio digital da Cantina SENAI — pratos e lanches, pedidos online, quiz de alergias e áreas para aluno, funcionário, proprietário e administrador. App offline (PWA)." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="Cantina SENAI" />
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icones/favicon-32.png" />
+  <link rel="icon" type="image/x-icon" href="icones/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="icones/apple-touch-icon.png" />
+  <link rel="icon" sizes="192x192" href="icones/icon-192.png" />
+  <title>Cantina SENAI — Pratos &amp; Lanches • App</title>
+
+  <!-- Fontes: Playfair Display (serifa dos títulos) + Inter (corpo) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Tailwind CSS (CDN, sem build) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cream: { DEFAULT: "#FAF5E8", light: "#FDFBF7", dark: "#F5F0E8", sand: "#E8D5C4" },
+            wine:  { DEFAULT: "#6B1220", dark: "#5C1A1B", light: "#8E1F2F", button: "#7B1E28" },
+            brick: "#C0272D",
+            sage:  { bg: "#E4F0E2", text: "#4A7C59" },
+            ink:   { DEFAULT: "#1C1917", soft: "#57534E", mid: "#5A5A5A" },
+            gold:  "#D9A441",
+            forest:"#1e3a2f"
+          },
+          fontFamily: {
+            serif: ['"Playfair Display"', "Georgia", "serif"],
+            sans:  ["Inter", "system-ui", "sans-serif"]
+          },
+          boxShadow: {
+            soft: "0 10px 40px -12px rgba(92,26,27,0.18)",
+            card: "0 6px 24px -10px rgba(28,25,23,0.14)"
+          },
+          borderRadius: { xl2: "1.5rem" }
+        }
+      }
+    };
+  </script>
+
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+
+  <!-- Animata.css (biblioteca de animações) -->
+  <link rel="stylesheet" href="animata.css" />
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: "Inter", system-ui, sans-serif; background-color: #FAF5E8; color: #1C1917; }
+    h1, h2, h3, .font-serif { font-family: "Playfair Display", Georgia, serif; }
+    .eyebrow { letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.72rem; font-weight: 600; }
+    .smallcaps { font-variant: small-caps; letter-spacing: 0.12em; }
+    ::selection { background: #6B1220; color: #FAF5E8; }
+    /* scrollbar discreta */
+    ::-webkit-scrollbar { width: 10px; height: 10px; }
+    ::-webkit-scrollbar-thumb { background: #E8D5C4; border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: #C89B7B; }
+    .pill-active { background: #6B1220; color: #FDFBF7; }
+    .nav-link { transition: all .2s ease; }
+    .card-hover { transition: transform .25s ease, box-shadow .25s ease; }
+    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 18px 40px -16px rgba(92,26,27,0.28); }
+    .alergia-atencao { outline: 2px dashed #C0272D; outline-offset: 3px; }
+    .alergia-bloq { opacity: .55; }
+    .kanban-card { transition: transform .15s ease, box-shadow .15s ease; }
+    .kanban-card:hover { transform: translateY(-2px); }
+    details > summary { list-style: none; cursor: pointer; }
+    details > summary::-webkit-details-marker { display: none; }
+    .btn { transition: transform .12s ease, background .2s ease, box-shadow .2s ease; }
+    .btn:active { transform: scale(0.97); }
+    .status-dot { width: 8px; height: 8px; border-radius: 9999px; display: inline-block; }
+    .input-mini { font-size: 0.8125rem; padding: 0.3rem 0.6rem; border: 1px solid #E8D5C4; border-radius: 0.5rem; background: #FDFBF7; color: #1C1917; }
+    .input-mini:focus { outline: none; box-shadow: 0 0 0 2px rgba(107,18,32,0.25); }
+  </style>
+</head>
+
+<body class="font-sans antialiased">
+
+  <!-- ===== Barra de anúncio (estilo Cantina SENAI) ===== -->
+  <div id="announce" class="bg-wine-dark text-cream-light text-center text-[11px] sm:text-xs py-2 overflow-hidden animata-slide-down">
+    <div class="animata-marquee whitespace-nowrap inline-block">
+      <span class="mx-6">• APP OFFLINE ATIVO • RESPONSIVO PARA QUALQUER TELA</span>
+      <span class="mx-6">• INSTALE NO CELULAR • FUNCIONA SEM INTERNET</span>
+      <span class="mx-6">• CARDÁPIO DIGITAL DA CANTINA SENAI • PRATOS &amp; LANCHES</span>
+      <span class="mx-6">• APP OFFLINE ATIVO • RESPONSIVO PARA QUALQUER TELA</span>
+      <span class="mx-6">• INSTALE NO CELULAR • FUNCIONA SEM INTERNET</span>
+      <span class="mx-6">• CARDÁPIO DIGITAL DA CANTINA SENAI • PRATOS &amp; LANCHES</span>
+    </div>
+  </div>
+
+  <!-- ===== Navbar ===== -->
+  <header class="sticky top-0 z-40 bg-cream-light/95 backdrop-blur border-b border-cream-sand">
+    <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+      <!-- Logo -->
+      <a href="#hero" class="flex items-center gap-2.5 shrink-0">
+        <img src="icones/logo-64.png" alt="Logo Cantina SENAI" class="w-9 h-9 rounded-full ring-2 ring-gold/60" />
+        <span class="flex flex-col leading-none">
+          <span class="font-serif font-bold text-wine text-lg">Cantina SENAI</span>
+          <span class="text-[10px] tracking-widest text-ink-soft uppercase">Pratos &amp; Lanches • App</span>
+        </span>
+      </a>
+
+      <!-- Nav central (pills) -->
+      <div id="nav-pills" class="hidden md:flex items-center gap-1 bg-cream-dark rounded-full p-1">
+        <a href="#hero" class="nav-link px-4 py-1.5 rounded-full text-sm font-medium text-ink hover:bg-cream-sand" data-nav="hero">Início</a>
+        <a href="#cardapio" class="nav-link px-4 py-1.5 rounded-full text-sm font-medium text-ink hover:bg-cream-sand" data-nav="cardapio">Cardápio</a>
+        <a href="#quiz-alergias" class="nav-link px-4 py-1.5 rounded-full text-sm font-medium text-ink hover:bg-cream-sand" data-nav="quiz-alergias">Quiz &amp; Alergias</a>
+        <a href="#areas-acesso" class="nav-link px-4 py-1.5 rounded-full text-sm font-medium text-ink hover:bg-cream-sand" data-nav="areas-acesso">Áreas de Acesso</a>
+      </div>
+
+      <!-- Ações direita -->
+      <div class="flex items-center gap-2">
+        <button id="btn-carrinho" class="relative btn p-2.5 rounded-full bg-cream-dark hover:bg-cream-sand text-wine" aria-label="Carrinho">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.7 13.4a2 2 0 0 0 2 1.6h9.7a2 2 0 0 0 2-1.6L23 6H6"/></svg>
+          <span id="carrinho-count" class="absolute -top-1 -right-1 bg-brick text-white text-[10px] font-bold rounded-full min-w-[18px] h-[18px] flex items-center justify-center px-1 hidden">0</span>
+        </button>
+        <button id="btn-instalar" class="btn hidden sm:inline-flex items-center gap-1.5 bg-brick hover:bg-wine text-cream-light text-sm font-semibold px-4 py-2 rounded-full shadow-soft">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Instalar App
+        </button>
+        <button id="btn-menu-mobile" class="md:hidden btn p-2.5 rounded-full bg-cream-dark text-wine" aria-label="Menu">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div id="menu-mobile" class="md:hidden hidden border-t border-cream-sand bg-cream-light px-4 py-3 space-y-1">
+      <a href="#hero" class="block px-3 py-2 rounded-lg text-ink hover:bg-cream-dark" data-nav="hero">Início</a>
+      <a href="#cardapio" class="block px-3 py-2 rounded-lg text-ink hover:bg-cream-dark" data-nav="cardapio">Cardápio</a>
+      <a href="#quiz-alergias" class="block px-3 py-2 rounded-lg text-ink hover:bg-cream-dark" data-nav="quiz-alergias">Quiz &amp; Alergias</a>
+      <a href="#areas-acesso" class="block px-3 py-2 rounded-lg text-ink hover:bg-cream-dark" data-nav="areas-acesso">Áreas de Acesso</a>
+      <button id="btn-instalar-mobile" class="w-full mt-2 bg-brick text-cream-light font-semibold py-2 rounded-lg">Instalar App</button>
+    </div>
+  </header>
+
+  <!-- ===== Container principal ===== -->
+  <main id="main">
+
+    <!-- ===== HERO ===== -->
+    <section id="hero" class="max-w-6xl mx-auto px-4 sm:px-6 pt-8 sm:pt-12 pb-6">
+      <div class="relative rounded-[28px] bg-gradient-to-br from-cream-sand to-cream-dark overflow-hidden shadow-soft">
+        <div class="grid lg:grid-cols-2 gap-6 lg:gap-10 p-6 sm:p-10 lg:p-14 items-center">
+          <!-- Texto -->
+          <div class="animata-fade-up">
+            <span class="eyebrow text-wine-light bg-cream-light px-3 py-1 rounded-full border border-cream-sand">FEITO PARA VOCÊ</span>
+            <h1 class="mt-5 font-serif font-extrabold text-4xl sm:text-5xl lg:text-6xl leading-[1.05]">
+              <span class="text-ink">Seu intervalo</span><br />
+              <span class="text-wine">merece sabor.</span>
+            </h1>
+            <p class="mt-5 text-ink-soft text-base sm:text-lg max-w-md leading-relaxed">
+              Cardápio digital da <strong class="text-ink">Cantina SENAI</strong> — pratos e lanches feitos na hora.
+              Peça pelo app, receba no balcão e evite filas. Funciona offline em qualquer celular ou tablet.
+            </p>
+            <div class="mt-7 flex flex-wrap gap-3">
+              <a href="#cardapio" class="btn inline-flex items-center gap-2 bg-wine hover:bg-wine-dark text-cream-light font-semibold px-5 py-3 rounded-full shadow-soft">
+                Ver Pratos e Lanches
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </a>
+              <a href="#quiz-alergias" class="btn inline-flex items-center gap-2 bg-cream-light hover:bg-white border border-cream-sand text-ink font-semibold px-5 py-3 rounded-full">
+                <span>🧪</span> Quiz de Humor &amp; Alergias
+              </a>
+            </div>
+            <div class="mt-6 flex items-center gap-2 text-xs text-ink-soft">
+              <span class="status-dot bg-sage-text animata-pulse"></span>
+              App online — pedidos em tempo real • aceita instalação
+            </div>
+          </div>
+
+          <!-- Ilustração hero -->
+          <div class="relative hidden sm:flex items-center justify-center animata-scale">
+            <div class="relative">
+              <div class="w-56 h-56 sm:w-72 sm:h-72 rounded-full bg-gradient-to-br from-gold/40 to-cream-sand shadow-card flex items-center justify-center animata-float">
+                <span class="text-[120px] sm:text-[150px] leading-none">🍔</span>
+              </div>
+              <!-- ícones flutuantes -->
+              <div class="absolute -left-6 top-6 w-14 h-14 rounded-full bg-cream-light shadow-card flex items-center justify-center animata-float-slow text-2xl">🥐</div>
+              <div class="absolute -right-4 top-10 w-14 h-14 rounded-full bg-cream-light shadow-card flex items-center justify-center animata-float text-2xl" style="animation-delay:.6s">🥤</div>
+              <div class="absolute -right-2 -bottom-2 w-14 h-14 rounded-full bg-cream-light shadow-card flex items-center justify-center animata-float-slow text-2xl" style="animation-delay:.3s">☕</div>
+              <!-- badge offline -->
+              <div class="absolute -left-2 -bottom-3 w-20 h-20 rounded-full bg-wine-dark text-cream-light flex flex-col items-center justify-center text-center shadow-soft animata-pulse">
+                <span class="text-[9px] font-bold tracking-wider">APP</span>
+                <span class="text-[9px] font-bold tracking-wider">OFFLINE</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Faixa de categorias (ícones de linha) ===== -->
+    <section id="categorias-strip" class="bg-cream-light border-y border-cream-sand">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 grid grid-cols-7 divide-x divide-cream-sand">
+        <!-- preenchido por JS -->
+        <div class="col-span-4 sm:col-span-7 text-center py-10 text-ink-soft">Carregando categorias…</div>
+      </div>
+    </section>
+
+    <!-- ===== Cardápio ===== -->
+    <section id="cardapio" class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+      <div class="max-w-2xl">
+        <span class="eyebrow text-wine-light">NOSSO CARDÁPIO</span>
+        <h2 class="mt-3 font-serif font-bold text-3xl sm:text-4xl text-ink">
+          Pratos &amp; <span class="text-wine">Lanches</span>
+        </h2>
+        <p class="mt-4 text-ink-soft leading-relaxed">
+          Tudo preparado na hora, com ingredientes frescos. Filtre por categoria, confira os alérgicos e
+          adicione ao seu pedido. Os preços são os mesmos do balcão da cantina.
+        </p>
+      </div>
+
+      <!-- Filtros (pills) -->
+      <div id="filtros" class="mt-8 flex flex-wrap gap-2"></div>
+
+      <!-- Alerta de alergia ativa -->
+      <div id="alerta-alergia" class="hidden mt-4 bg-sage-bg border border-sage-text/30 text-sage-text rounded-xl px-4 py-3 text-sm flex items-center gap-2">
+        <span>⚠️</span><span id="alerta-alergia-txt"></span>
+        <button id="limpar-alergias" class="ml-auto underline">limpar</button>
+      </div>
+
+      <!-- Grid de produtos -->
+      <div id="grid-produtos" class="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 animata-stagger"></div>
+
+      <!-- Observações do cardápio -->
+      <div id="obs-cardapio" class="mt-10 text-xs text-ink-soft bg-cream-light border border-cream-sand rounded-xl p-4"></div>
+    </section>
+
+    <!-- ===== Quiz & Alergias (CTA) ===== -->
+    <section id="quiz-alergias" class="bg-cream-dark border-y border-cream-sand">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="eyebrow text-wine-light">SEGURANÇA ALIMENTAR</span>
+          <h2 class="mt-3 font-serif font-bold text-3xl sm:text-4xl text-ink">
+            Quiz de <span class="text-wine">Alergias</span> &amp; Preferências
+          </h2>
+          <p class="mt-4 text-ink-soft leading-relaxed max-w-lg">
+            Marque suas alergias e restrições. O app destaca automaticamente os itens do cardápio que
+            contêm glúten, leite, ovo ou outros alérgenos — e sinaliza os que são seguros para você.
+            Suas preferências ficam salvas no próprio aparelho.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button id="btn-abrir-quiz" class="btn inline-flex items-center gap-2 bg-wine hover:bg-wine-dark text-cream-light font-semibold px-5 py-3 rounded-full shadow-soft">
+              <span>🧪</span> Responder ao Quiz
+            </button>
+            <a href="#cardapio" class="btn inline-flex items-center gap-2 bg-cream-light border border-cream-sand text-ink font-semibold px-5 py-3 rounded-full">
+              Ver cardápio seguro →
+            </a>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 gap-4">
+          <div class="bg-cream-light rounded-xl p-5 shadow-card"><div class="text-3xl">🌾</div><div class="mt-2 font-semibold text-ink">Glúten</div><div class="text-xs text-ink-soft">Pães, bifes à milanesa, massas</div></div>
+          <div class="bg-cream-light rounded-xl p-5 shadow-card"><div class="text-3xl">🥛</div><div class="mt-2 font-semibold text-ink">Leite</div><div class="text-xs text-ink-soft">Queijos, cremes, chocolate quente</div></div>
+          <div class="bg-cream-light rounded-xl p-5 shadow-card"><div class="text-3xl">🥚</div><div class="mt-2 font-semibold text-ink">Ovo</div><div class="text-xs text-ink-soft">X-Egg, pão com ovo, omelete</div></div>
+          <div class="bg-cream-light rounded-xl p-5 shadow-card"><div class="text-3xl">🌶️</div><div class="mt-2 font-semibold text-ink">Calabresa</div><div class="text-xs text-ink-soft">Salsicha, linguiça, embutidos</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Áreas de Acesso ===== -->
+    <section id="areas-acesso" class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20">
+      <div class="max-w-2xl">
+        <span class="eyebrow text-wine-light">4 ÁREAS DE ACESSO</span>
+        <h2 class="mt-3 font-serif font-bold text-3xl sm:text-4xl text-ink">
+          Entre na sua <span class="text-wine">área</span>
+        </h2>
+        <p class="mt-4 text-ink-soft leading-relaxed">
+          Cada perfil tem funções próprias. Escolha o seu, faça login e use o painel correspondente.
+          As credenciais de demonstração estão escritas em cada cartão.
+        </p>
+      </div>
+
+      <div id="grid-areas" class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 animata-stagger"></div>
+
+      <!-- Painel logado (escondido por padrão) -->
+      <div id="painel-logado" class="hidden mt-12 bg-cream-light border border-cream-sand rounded-2xl shadow-soft overflow-hidden">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-wine text-cream-light px-5 py-4">
+          <div class="flex items-center gap-3">
+            <span id="painel-icone" class="text-2xl">🎓</span>
+            <div>
+              <div class="font-serif text-lg font-bold" id="painel-titulo">Área do Aluno</div>
+              <div class="text-xs text-cream-light/80" id="painel-usuario">—</div>
+            </div>
+          </div>
+          <button id="btn-logout" class="btn bg-cream-light/15 hover:bg-cream-light/25 text-cream-light text-sm font-semibold px-4 py-2 rounded-full">Sair</button>
+        </div>
+        <div id="painel-conteudo" class="p-5"></div>
+      </div>
+    </section>
+
+    <!-- ===== Como instalar (instrução APK) ===== -->
+    <section id="instalar" class="bg-forest text-cream-light">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-14 sm:py-20 grid lg:grid-cols-2 gap-10 items-center">
+        <div>
+          <span class="eyebrow text-gold">INSTALAR COMO APP</span>
+          <h2 class="mt-3 font-serif font-bold text-3xl sm:text-4xl">
+            Transforme em <span class="text-gold">APK</span> no seu celular
+          </h2>
+          <p class="mt-4 text-cream-light/85 leading-relaxed max-w-lg">
+            Este site é um <strong>PWA</strong> (app web progressivo): funciona offline e pode ser instalado
+            como aplicativo. No Android, depois de instalado você pode empacotá-lo como
+            <strong>APK</strong> pelo site gratuito <em>PWABuilder</em> — sem programar.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <button id="btn-instalar-2" class="btn inline-flex items-center gap-2 bg-gold hover:bg-gold/90 text-forest font-bold px-5 py-3 rounded-full shadow-soft">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Instalar neste aparelho
+            </button>
+            <a href="https://www.pwabuilder.com/" target="_blank" rel="noopener" class="btn inline-flex items-center gap-2 border border-cream-light/40 hover:bg-cream-light/10 text-cream-light font-semibold px-5 py-3 rounded-full">
+              Gerar APK no PWABuilder ↗
+            </a>
+          </div>
+          <p class="mt-3 text-xs text-cream-light/70">Veja o passo a passo completo no arquivo <strong>README.md</strong> que acompanha o app.</p>
+        </div>
+        <ol class="space-y-3 text-sm">
+          <li class="flex gap-3 bg-cream-light/10 rounded-xl p-4"><span class="shrink-0 w-7 h-7 rounded-full bg-gold text-forest font-bold flex items-center justify-center">1</span><span><strong>Abra o site no Chrome/Edge do Android.</strong> Toque em “Instalar App” no topo.</span></li>
+          <li class="flex gap-3 bg-cream-light/10 rounded-xl p-4"><span class="shrink-0 w-7 h-7 rounded-full bg-gold text-forest font-bold flex items-center justify-center">2</span><span><strong>Confirme “Adicionar à tela inicial”.</strong> O ícone da Cantina aparece como um app.</span></li>
+          <li class="flex gap-3 bg-cream-light/10 rounded-xl p-4"><span class="shrink-0 w-7 h-7 rounded-full bg-gold text-forest font-bold flex items-center justify-center">3</span><span><strong>Para virar APK:</strong> publique o app em qualquer hospedagem (ex.: GitHub Pages, Netlify) e cole a URL no <em>pwabuilder.com</em>.</span></li>
+          <li class="flex gap-3 bg-cream-light/10 rounded-xl p-4"><span class="shrink-0 w-7 h-7 rounded-full bg-gold text-forest font-bold flex items-center justify-center">4</span><span><strong>Baixe o Android Package</strong> gerado e instale no celular (ative “fontes desconhecidas”).</span></li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Footer ===== -->
+  <footer class="bg-wine-dark text-cream-light/85">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div>
+        <div class="flex items-center gap-2.5">
+          <img src="icones/logo-64.png" alt="Logo" class="w-9 h-9 rounded-full ring-2 ring-gold/60" />
+          <span class="font-serif font-bold text-cream-light text-lg">Cantina SENAI</span>
+        </div>
+        <p class="mt-3 text-sm leading-relaxed text-cream-light/70">
+          Cardápio digital com pedidos online e app offline. Pratos &amp; lanches feitos na hora para a
+          comunidade SENAI.
+        </p>
+      </div>
+      <div>
+        <h3 class="eyebrow text-gold">Navegação</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li><a href="#hero" class="hover:text-cream-light">Início</a></li>
+          <li><a href="#cardapio" class="hover:text-cream-light">Cardápio</a></li>
+          <li><a href="#quiz-alergias" class="hover:text-cream-light">Quiz &amp; Alergias</a></li>
+          <li><a href="#areas-acesso" class="hover:text-cream-light">Áreas de Acesso</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="eyebrow text-gold">Horários</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>Seg–Sex: 7h às 22h</li>
+          <li>Sábado: 8h às 14h</li>
+          <li>Domingo: fechado</li>
+          <li class="text-cream-light/60">Intervalo: 9h–9h20 • 12h–13h • 18h–18h20</li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="eyebrow text-gold">Contato</h3>
+        <ul class="mt-3 space-y-2 text-sm">
+          <li>📍 Escola SENAI — Bloco B, Térreo</li>
+          <li>📞 (00) 0000-0000</li>
+          <li>✉️ cantina@senai.edu.br</li>
+        </ul>
+        <button id="btn-instalar-3" class="mt-4 btn bg-gold hover:bg-gold/90 text-forest font-bold text-sm px-4 py-2 rounded-full">Instalar App</button>
+      </div>
+    </div>
+    <div class="border-t border-cream-light/15">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-cream-light/60">
+        <span>© <span id="ano"></span> Cantina SENAI — Pratos &amp; Lanches. App offline (PWA).</span>
+        <span>Feito com JavaScript · Tailwind CSS · jQuery · Animata.css · JSON</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Modal: Login (área de acesso) ===== -->
+  <div id="modal-login" class="hidden fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-cream-light rounded-2xl shadow-soft w-full max-w-md animata-scale overflow-hidden">
+      <div class="bg-wine text-cream-light px-5 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span id="login-icone" class="text-2xl">🎓</span>
+          <div>
+            <div class="font-serif text-lg font-bold" id="login-titulo">Área do Aluno</div>
+            <div class="text-xs text-cream-light/80" id="login-desc">Faça login para continuar</div>
+          </div>
+        </div>
+        <button class="btn-login-fechar text-cream-light/80 hover:text-cream-light text-2xl leading-none">×</button>
+      </div>
+      <form id="form-login" class="p-5 space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-ink-soft uppercase tracking-wider mb-1">E-mail / usuário</label>
+          <input id="login-email" type="text" autocomplete="username" class="w-full rounded-xl border border-cream-sand bg-cream-light px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-wine/40" placeholder="aluno@senai" />
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-ink-soft uppercase tracking-wider mb-1">Senha</label>
+          <input id="login-senha" type="password" autocomplete="current-password" class="w-full rounded-xl border border-cream-sand bg-cream-light px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-wine/40" placeholder="••••" />
+        </div>
+        <div id="login-erro" class="hidden text-sm text-brick bg-brick/10 rounded-lg px-3 py-2"></div>
+        <div id="login-dica" class="text-xs text-ink-soft bg-cream-dark rounded-lg px-3 py-2"></div>
+        <button type="submit" class="btn w-full bg-wine hover:bg-wine-dark text-cream-light font-semibold py-3 rounded-xl shadow-soft">Entrar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Modal: Detalhe do produto ===== -->
+  <div id="modal-produto" class="hidden fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-cream-light rounded-2xl shadow-soft w-full max-w-md animata-scale overflow-hidden" id="modal-produto-inner"></div>
+  </div>
+
+  <!-- ===== Modal: Carrinho ===== -->
+  <div id="modal-carrinho" class="hidden fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-cream-light rounded-2xl shadow-soft w-full max-w-lg animata-scale overflow-hidden flex flex-col max-h-[90vh]">
+      <div class="bg-wine text-cream-light px-5 py-4 flex items-center justify-between">
+        <div class="font-serif text-lg font-bold">🛒 Seu Pedido</div>
+        <button id="btn-fechar-carrinho" class="text-cream-light/80 hover:text-cream-light text-2xl leading-none">×</button>
+      </div>
+      <div id="carrinho-conteudo" class="p-5 overflow-y-auto flex-1"></div>
+    </div>
+  </div>
+
+  <!-- ===== Modal: Quiz de Alergias ===== -->
+  <div id="modal-quiz" class="hidden fixed inset-0 z-50 bg-ink/60 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="bg-cream-light rounded-2xl shadow-soft w-full max-w-md animata-scale overflow-hidden">
+      <div class="bg-wine text-cream-light px-5 py-4 flex items-center justify-between">
+        <div class="font-serif text-lg font-bold">🧪 Quiz de Alergias</div>
+        <button id="btn-fechar-quiz" class="text-cream-light/80 hover:text-cream-light text-2xl leading-none">×</button>
+      </div>
+      <form id="form-quiz" class="p-5 space-y-4">
+        <p class="text-sm text-ink-soft">Marque o que você NÃO pode consumir. Vamos destacar os itens do cardápio em vermelho.</p>
+        <div id="quiz-opcoes" class="grid grid-cols-2 gap-2"></div>
+        <div>
+          <label class="block text-xs font-semibold text-ink-soft uppercase tracking-wider mb-1">Prefere sem (opcional)</label>
+          <input id="quiz-pref" type="text" class="w-full rounded-xl border border-cream-sand bg-cream-light px-4 py-2.5 focus:outline-none focus:ring-2 focus:ring-wine/40" placeholder="Ex.: sem pimenta, sem cebola…" />
+        </div>
+        <button type="submit" class="btn w-full bg-wine hover:bg-wine-dark text-cream-light font-semibold py-3 rounded-xl shadow-soft">Salvar preferências</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ===== Toast ===== -->
+  <div id="toast" class="hidden fixed bottom-5 left-1/2 -translate-x-1/2 z-[60] bg-ink text-cream-light text-sm px-4 py-3 rounded-xl shadow-soft animata-fade-up max-w-[90vw]"></div>
+
+  <!-- ===== Estado (área logada) — contêiner universal escondido ===== -->
+  <div id="estado-app" hidden></div>
+
+  <!-- ============================================================
+       Script principal (JavaScript + jQuery)
+       ============================================================ -->
+  <script>
+  /* ===== DADOS EMBUTIDOS (fallback quando fetch falha, ex.: file://) =====
+     Quando servido via HTTP (PWA), o app tenta buscar dados/cardapio.json
+     e dados/usuarios.json primeiro — JSON é a fonte de dados principal. */
+  window.CARDAPIO_FALLBACK = {"estabelecimento": "Cantina SENAI", "atualizadoEm": "2026-11-12", "observacoes": ["Hambúrguer no STEAK: acréscimo de ovo ou fritas por mais R$ 5,00.", "Embalagem para viagem: acréscimo de R$ 1,50 por item."], "categorias": [{"id": "lanches", "nome": "Lanches", "icone": "🍔", "ordem": 1}, {"id": "refeicoes", "nome": "Refeições", "icone": "🍽️", "ordem": 2}, {"id": "saladas", "nome": "Saladas", "icone": "🥗", "ordem": 3}], "itens": [{"id": "l01", "categoria": "lanches", "nome": "Queijo Quente", "preco": 18.0, "descricao": "Pão na chapa com queijo derretido.", "emoji": "🧀", "alergias": ["gluten", "leite"], "imagem": "img/queijo-quente.jpg"}, {"id": "l02", "categoria": "lanches", "nome": "Queijo Quente c/ Tomate", "preco": 18.0, "descricao": "Pão de forma grelhado e dourado na chapa, com queijo derretido e rodelas de tomate fresco, finalizado com salsinha.", "emoji": "🧀", "alergias": ["gluten", "leite"], "imagem": "img/queijo-quente-tomate.jpg"}, {"id": "l03", "categoria": "lanches", "nome": "Misto Quente / Frio", "preco": 18.0, "descricao": "Pão de forma prensado na chapa até dourar, com presunto e queijo derretido — o clássico misto quente crocante por fora e macio por dentro.", "emoji": "🥪", "alergias": ["gluten", "leite"], "imagem": "img/misto-quente.jpg"}, {"id": "l04", "categoria": "lanches", "nome": "Bauru", "preco": 18.0, "descricao": "Pão francês quentinho com rosbife suculento e queijo derretido, acompanhado de tomate e pepino em conserva — o autêntico Bauru.", "emoji": "🥪", "alergias": ["gluten", "leite"], "imagem": "img/bauru.jpg"}, {"id": "l05", "categoria": "lanches", "nome": "Americano", "preco": 20.0, "descricao": "Sanduíche americano com presunto, queijo, ovo e bacon.", "emoji": "🥪", "alergias": ["gluten", "leite", "ovo"], "imagem": "img/americano.jpg"}, {"id": "l06", "categoria": "lanches", "nome": "Hambúrguer", "preco": 14.0, "descricao": "Hambúrguer simples no pão.", "emoji": "🍔", "alergias": ["gluten"], "imagem": "img/hamburguer.jpg"}, {"id": "l07", "categoria": "lanches", "nome": "X-Burguer", "preco": 18.0, "descricao": "Hambúrguer com queijo.", "emoji": "🍔", "alergias": ["gluten", "leite"], "imagem": "img/x-burguer.jpg"}, {"id": "l08", "categoria": "lanches", "nome": "X-Egg", "preco": 20.0, "descricao": "Hambúrguer com queijo e ovo.", "emoji": "🍔", "alergias": ["gluten", "leite", "ovo"], "imagem": "img/x-egg.jpg"}, {"id": "l09", "categoria": "lanches", "nome": "X-Salada", "preco": 20.0, "descricao": "Hambúrguer artesanal suculento no pão, com queijo derretido, alface crocante, tomate fresco e maionese da casa.", "emoji": "🍔", "alergias": ["gluten", "leite"], "imagem": "img/x-salada.jpg"}, {"id": "l10", "categoria": "lanches", "nome": "X-Salada Egg", "preco": 22.0, "descricao": "Hambúrguer artesanal no pão brioche com queijo cheddar derretido, ovo frito de gema macia, alface e tomate — fartura total.", "emoji": "🍔", "alergias": ["gluten", "leite", "ovo"], "imagem": "img/x-salada-egg.jpg"}, {"id": "l11", "categoria": "lanches", "nome": "X-Bacon", "preco": 23.0, "descricao": "Hambúrguer artesanal no pão brioche com queijo cheddar, bacon crocante, alface, tomate, picles e molho especial da casa.", "emoji": "🍔", "alergias": ["gluten", "leite"], "imagem": "img/x-bacon.jpg"}, {"id": "l15", "categoria": "lanches", "nome": "Filé de Frango", "preco": 17.0, "descricao": "Sanduíche de filé de frango grelhado.", "emoji": "🐔", "alergias": ["gluten"], "imagem": "img/file-frango.jpg"}, {"id": "l16", "categoria": "lanches", "nome": "Filé de Frango c/ Queijo", "preco": 19.0, "descricao": "Filé de frango com queijo.", "emoji": "🐔", "alergias": ["gluten", "leite"], "imagem": "img/file-frango.jpg"}, {"id": "l17", "categoria": "lanches", "nome": "Filé de Frango c/ Queijo + Salada", "preco": 21.0, "descricao": "Filé de frango com queijo e salada.", "emoji": "🐔", "alergias": ["gluten", "leite"], "imagem": "img/file-frango.jpg"}, {"id": "l18", "categoria": "lanches", "nome": "Calabresa", "preco": 17.0, "descricao": "Sanduíche de calabresa na chapa.", "emoji": "🌶️", "alergias": ["gluten"], "imagem": "img/calabresa.jpg"}, {"id": "l19", "categoria": "lanches", "nome": "Calabresa c/ Queijo", "preco": 19.0, "descricao": "Calabresa com queijo derretido.", "emoji": "🌶️", "alergias": ["gluten", "leite"], "imagem": "img/calabresa-queijo.jpg"}, {"id": "l20", "categoria": "lanches", "nome": "Calabresa c/ Queijo + Salada", "preco": 21.0, "descricao": "Calabresa com queijo e salada.", "emoji": "🌶️", "alergias": ["gluten", "leite"], "imagem": "img/calabresa-queijo-salada.jpg"}, {"id": "l21", "categoria": "lanches", "nome": "Pão c/ Manteiga", "preco": 6.5, "descricao": "Pão francês quentinho dourado na chapa, macio por dentro, generosamente regado com manteiga derretida que escorre pelo miolo.", "imagem": "img/pao-manteiga.jpg", "emoji": "🥖", "alergias": ["gluten", "leite"]}, {"id": "l22", "categoria": "lanches", "nome": "Pão c/ Manteiga + Chapa", "preco": 8.5, "descricao": "Pão tostado na chapa com manteiga.", "emoji": "🥖", "alergias": ["gluten", "leite"], "imagem": "img/pao-manteiga-chapa.jpg"}, {"id": "l23", "categoria": "lanches", "nome": "Pão c/ Manteiga + Requeijão", "preco": 8.5, "descricao": "Pão francês dourado na chapa, untado com manteiga e generosamente recheado com requeijão cremoso — macio, quentinho e irresistível.", "emoji": "🥖", "alergias": ["gluten", "leite"], "imagem": "img/pao-manteiga-requeijao.jpg"}, {"id": "l24", "categoria": "lanches", "nome": "Pão c/ Requeijão", "preco": 9.0, "descricao": "Pão francês dourado e crocante, recheado generosamente com requeijão cremoso e aveludado — macio e irresistível a qualquer hora.", "imagem": "img/pao-requeijao.jpg", "emoji": "🥖", "alergias": ["gluten", "leite"]}, {"id": "l25", "categoria": "lanches", "nome": "Pão Com Ovo", "preco": 11.0, "descricao": "Pão francês dourado e crocante recheado com ovo frito de gema macia, finalizado com cebolete e pimenta-do-reino — fresquinho e saboroso.", "imagem": "img/pao-ovo.jpg", "emoji": "🍳", "alergias": ["gluten", "ovo"]}, {"id": "l26", "categoria": "lanches", "nome": "Pão Com Ovo + Salada", "preco": 11.0, "descricao": "Pão francês dourado recheado com ovo frito de gema macia, rúcula fresca, tomate-cereja e pepino, finalizado com cebolinha e pimenta-do-reino.", "imagem": "img/pao-ovo-salada.jpg", "emoji": "🍳", "alergias": ["gluten", "ovo"]}, {"id": "r01", "categoria": "refeicoes", "nome": "Prato Feito - Amigão", "preco": 16.5, "descricao": "Prato feito base da casa: arroz soltinho, feijão caldoso e ovo frito com toque de cebolinha e pimenta — fartura a preço de cantina.", "emoji": "🍚", "alergias": ["ovo"], "imagem": "img/comercial-amigao.jpg"}, {"id": "r02", "categoria": "refeicoes", "nome": "Bisteca", "preco": 28.0, "descricao": "Suculenta bisteca bovina grelhada no ponto, com crosta dourada e sabor marcante. Acompanha arroz, feijão, batata frita crocante e salada fresca de alface e tomate.", "imagem": "img/comercial-bisteca.jpg", "emoji": "🥩", "alergias": []}, {"id": "r03", "categoria": "refeicoes", "nome": "Calabresa Defumada", "preco": 28.0, "descricao": "Calabresa defumada fatiada grelhada na brasa, dourada e suculenta. Acompanha arroz, feijão, batata frita crocante e salada fresca.", "imagem": "img/comercial-calabresa.jpg", "emoji": "🌶️", "alergias": []}, {"id": "r04", "categoria": "refeicoes", "nome": "Contratê", "preco": 32.0, "descricao": "Bife de contrafilé grelhado na chapa, suculento e dourado. Acompanha arroz, feijão, batata frita crocante e salada fresca de alface e tomate.", "imagem": "img/comercial-contrafile.jpg", "emoji": "🥩", "alergias": []}, {"id": "r05", "categoria": "refeicoes", "nome": "Filé de Frango", "preco": 28.0, "descricao": "Filé de frango grelhado no ponto, suculento e dourado com marcas da chapa. Acompanha arroz, feijão, batata frita crocante e salada fresca.", "imagem": "img/comercial-frango.jpg", "emoji": "🐔", "alergias": []}, {"id": "r06", "categoria": "refeicoes", "nome": "Linguiça Toscana", "preco": 28.0, "descricao": "Linguiça toscana grelhada, dourada e suculenta com leve tostado. Acompanha arroz, feijão, batata frita crocante e salada fresca.", "imagem": "img/comercial-linguica.jpg", "emoji": "🌭", "alergias": []}, {"id": "r07", "categoria": "refeicoes", "nome": "Omelete", "preco": 28.0, "descricao": "Omelete dourada e macia, feita com ovos batidos na frigideira. Acompanha arroz, feijão, batata frita crocante e salada fresca.", "imagem": "img/comercial-omelete.jpg", "emoji": "🍳", "alergias": ["ovo", "leite"]}, {"id": "r08", "categoria": "refeicoes", "nome": "Strogonoff de Frango", "preco": 28.0, "descricao": "Strogonoff de frango cremoso com champignon e batata palha, acompanha arroz branco soltinho. Clássico prato de cantina.", "imagem": "img/comercial-strogonoff.jpg", "emoji": "🍛", "alergias": ["leite"]}, {"id": "r09", "categoria": "refeicoes", "nome": "Filé de Frango à Parmegiana", "preco": 28.0, "descricao": "Filé de frango empanado e grelhado, coberto com molho de tomate e queijo mussarela derretido gratinado. Acompanha arroz, feijão e batata frita crocante.", "imagem": "img/comercial-parmegiana.jpg", "emoji": "🍗", "alergias": ["gluten", "leite", "ovo"]}, {"id": "sa1", "categoria": "saladas", "nome": "Salada Contratê", "preco": 32.0, "descricao": "Alface, tomate, pepino, cebola e contrafilé.", "emoji": "🥗", "alergias": []}, {"id": "sa2", "categoria": "saladas", "nome": "Salada Demais Opções", "preco": 28.0, "descricao": "Alface, tomate, pepino e cebola com proteína à escolha.", "emoji": "🥗", "alergias": [], "imagem": "img/salada-frango.jpg"}]};
+  window.USUARIOS_FALLBACK = {"usuarios": [{"id": "u001", "papel": "aluno", "nome": "Ana Beatriz Souza", "email": "aluno@senai", "senha": "aluno", "turma": "Téc. Informática - Tarde"}, {"id": "u002", "papel": "aluno", "nome": "Pedro Henrique Lima", "email": "aluno2@senai", "senha": "aluno", "turma": "Mecatrônica - Manhã"}, {"id": "u003", "papel": "funcionario", "nome": "Maria das Dores", "email": "func@senai", "senha": "func", "cargo": "Atendente de Cantina"}, {"id": "u004", "papel": "funcionario", "nome": "João Cozinheiro", "email": "func2@senai", "senha": "func", "cargo": "Cozinheiro"}, {"id": "u005", "papel": "proprietario", "nome": "Sr. Carlos Mendes", "email": "dono@senai", "senha": "dono", "cargo": "Proprietário"}, {"id": "u006", "papel": "administrador", "nome": "Admin Geral", "email": "admin@senai", "senha": "admin", "cargo": "Administrador do Sistema"}], "papeis": [{"id": "aluno", "nome": "Aluno", "icone": "🎓", "cor": "#7B1E28", "descricao": "Acessa o cardápio, faz pedidos e responde ao quiz de alergias."}, {"id": "funcionario", "nome": "Funcionário", "icone": "👩‍🍳", "cor": "#8E1F2F", "descricao": "Recebe os pedidos, controla o status e a disponibilidade dos itens."}, {"id": "proprietario", "nome": "Proprietário", "icone": "🏢", "cor": "#5C1A1B", "descricao": "Acompanha vendas, faturamento e gerencia o cardápio (CRUD)."}, {"id": "administrador", "nome": "Administrador", "icone": "🛡️", "cor": "#6B1220", "descricao": "Gerencia usuários, configurações do sistema e logs de atividade."}]};
+  /* Fallback com dados COMPLETOS (cardápio + usuários) — o app funciona
+     também via file:// (duplo-clique no index.html), sem precisar de servidor. */
+  </script>
+  <script src="app.js"></script>
+</body>
+</html>

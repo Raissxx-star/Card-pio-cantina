@@ -1,0 +1,16 @@
+{
+  "usuarios": [
+    { "id": "u001", "papel": "aluno",         "nome": "Ana Beatriz Souza",      "email": "aluno@senai",       "senha": "aluno",     "turma": "Téc. Informática - Tarde" },
+    { "id": "u002", "papel": "aluno",         "nome": "Pedro Henrique Lima",    "email": "aluno2@senai",      "senha": "aluno",     "turma": "Mecatrônica - Manhã" },
+    { "id": "u003", "papel": "funcionario",   "nome": "Maria das Dores",        "email": "func@senai",        "senha": "func",      "cargo": "Atendente de Cantina" },
+    { "id": "u004", "papel": "funcionario",   "nome": "João Cozinheiro",        "email": "func2@senai",       "senha": "func",      "cargo": "Cozinheiro" },
+    { "id": "u005", "papel": "proprietario",  "nome": "Sr. Carlos Mendes",      "email": "dono@senai",        "senha": "dono",      "cargo": "Proprietário" },
+    { "id": "u006", "papel": "administrador", "nome": "Admin Geral",            "email": "admin@senai",       "senha": "admin",     "cargo": "Administrador do Sistema" }
+  ],
+  "papeis": [
+    { "id": "aluno",         "nome": "Aluno",         "icone": "🎓", "cor": "#7B1E28", "descricao": "Acessa o cardápio, faz pedidos e responde ao quiz de alergias." },
+    { "id": "funcionario",   "nome": "Funcionário",  "icone": "👩‍🍳", "cor": "#8E1F2F", "descricao": "Recebe os pedidos, controla o status e a disponibilidade dos itens." },
+    { "id": "proprietario",  "nome": "Proprietário", "icone": "🏢", "cor": "#5C1A1B", "descricao": "Acompanha vendas, faturamento e gerencia o cardápio (CRUD)." },
+    { "id": "administrador", "nome": "Administrador","icone": "🛡️", "cor": "#6B1220", "descricao": "Gerencia usuários, configurações do sistema e logs de atividade." }
+  ]
+}

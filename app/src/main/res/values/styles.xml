@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.CantinaSmart" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#EA580C</item>
+        <item name="colorPrimaryVariant">#C2410C</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+    </style>
+</resources>

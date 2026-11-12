@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <EditText
+        android:id="@+id/etProdName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nome do Produto (Ex: Coxinha)" />
+
+    <EditText
+        android:id="@+id/etProdCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Categoria (Salgados, Bebidas, Doces)"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etProdPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Preço (Ex: 6.50)"
+        android:inputType="numberDecimal"
+        android:layout_marginTop="8dp" />
+
+    <EditText
+        android:id="@+id/etProdStock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quantidade em Estoque"
+        android:inputType="number"
+        android:layout_marginTop="8dp" />
+
+</LinearLayout>

@@ -1,0 +1,103 @@
+/* ============================================================
+   animata.css — animações leves para a Cantina SENAI
+   Biblioteca própria (Animata.css) escrita em CSS puro.
+   Tecnologias permitidas: CSS (parte do Tailwind/Animata).
+   ============================================================ */
+
+/* ---- Fade in up ---- */
+@keyframes animata-fade-up {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animata-fade-up { animation: animata-fade-up 0.7s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* ---- Fade in ---- */
+@keyframes animata-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+.animata-fade { animation: animata-fade 0.6s ease both; }
+
+/* ---- Scale in (para modais e cards) ---- */
+@keyframes animata-scale {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+.animata-scale { animation: animata-scale 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* ---- Slide down (anúncio / dropdown) ---- */
+@keyframes animata-slide-down {
+  from { opacity: 0; transform: translateY(-100%); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animata-slide-down { animation: animata-slide-down 0.5s ease both; }
+
+/* ---- Float (ícones flutuantes do hero) ---- */
+@keyframes animata-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+.animata-float { animation: animata-float 4s ease-in-out infinite; }
+.animata-float-slow { animation: animata-float 6s ease-in-out infinite; }
+
+/* ---- Pulse soft (badge offline / status) ---- */
+@keyframes animata-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50%      { transform: scale(1.06); opacity: 0.85; }
+}
+.animata-pulse { animation: animata-pulse 2.4s ease-in-out infinite; }
+
+/* ---- Spin lento (carregando) ---- */
+@keyframes animata-spin {
+  to { transform: rotate(360deg); }
+}
+.animata-spin { animation: animata-spin 1s linear infinite; }
+
+/* ---- Shake (erro de login) ---- */
+@keyframes animata-shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-8px); }
+  40%, 80% { transform: translateX(8px); }
+}
+.animata-shake { animation: animata-shake 0.5s ease both; }
+
+/* ---- Ripple no botão ---- */
+@keyframes animata-ripple {
+  to { transform: scale(2.4); opacity: 0; }
+}
+.animata-ripple {
+  position: absolute;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.4);
+  transform: scale(0);
+  animation: animata-ripple 0.6s ease-out;
+  pointer-events: none;
+}
+
+/* ---- Marquee do anúncio ---- */
+@keyframes animata-marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+.animata-marquee { animation: animata-marquee 18s linear infinite; }
+
+/* ---- Aparição escalonada dos cards ---- */
+.animata-stagger > * { opacity: 0; }
+.animata-stagger > *:nth-child(1)  { animation: animata-fade-up 0.5s 0.05s both; }
+.animata-stagger > *:nth-child(2)  { animation: animata-fade-up 0.5s 0.10s both; }
+.animata-stagger > *:nth-child(3)  { animation: animata-fade-up 0.5s 0.15s both; }
+.animata-stagger > *:nth-child(4)  { animation: animata-fade-up 0.5s 0.20s both; }
+.animata-stagger > *:nth-child(5)  { animation: animata-fade-up 0.5s 0.25s both; }
+.animata-stagger > *:nth-child(6)  { animation: animata-fade-up 0.5s 0.30s both; }
+.animata-stagger > *:nth-child(7)  { animation: animata-fade-up 0.5s 0.35s both; }
+.animata-stagger > *:nth-child(8)  { animation: animata-fade-up 0.5s 0.40s both; }
+.animata-stagger > *:nth-child(n+9){ animation: animata-fade-up 0.5s 0.45s both; }
+
+/* Respeita preferência do usuário por menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}

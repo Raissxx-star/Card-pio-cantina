@@ -1,0 +1,28 @@
+{
+  "name": "Cantina SENAI — Pratos & Lanches",
+  "short_name": "Cantina SENAI",
+  "description": "Cardápio digital da Cantina SENAI com pedidos online, quiz de alergias e áreas para aluno, funcionário, proprietário e administrador. Funciona offline.",
+  "id": "/",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "fullscreen", "minimal-ui"],
+  "orientation": "portrait-primary",
+  "background_color": "#FAF5E8",
+  "theme_color": "#6B1220",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "categories": ["food", "education", "productivity", "shopping"],
+  "icons": [
+    { "src": "icones/icon-192.png",           "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icones/icon-512.png",           "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icones/icon-maskable-512.png",  "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icones/apple-touch-icon.png",   "sizes": "180x180", "type": "image/png", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Ver Cardápio",   "short_name": "Cardápio", "url": "./index.html#cardapio",     "icons": [{ "src": "icones/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Fazer Pedido",   "short_name": "Pedido",   "url": "./index.html#aluno",        "icons": [{ "src": "icones/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Área do Aluno",  "short_name": "Aluno",    "url": "./index.html#area-aluno",   "icons": [{ "src": "icones/icon-192.png", "sizes": "192x192" }] }
+  ],
+  "prefer_related_applications": false
+}

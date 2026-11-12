@@ -1,0 +1,449 @@
+{
+  "estabelecimento": "Cantina SENAI",
+  "atualizadoEm": "2026-11-12",
+  "observacoes": [
+    "Hambúrguer no STEAK: acréscimo de ovo ou fritas por mais R$ 5,00.",
+    "Embalagem para viagem: acréscimo de R$ 1,50 por item."
+  ],
+  "categorias": [
+    {
+      "id": "lanches",
+      "nome": "Lanches",
+      "icone": "🍔",
+      "ordem": 1
+    },
+    {
+      "id": "refeicoes",
+      "nome": "Refeições",
+      "icone": "🍽️",
+      "ordem": 2
+    },
+    {
+      "id": "saladas",
+      "nome": "Saladas",
+      "icone": "🥗",
+      "ordem": 3
+    }
+  ],
+  "itens": [
+    {
+      "id": "l01",
+      "categoria": "lanches",
+      "nome": "Queijo Quente",
+      "preco": 18.0,
+      "descricao": "Pão na chapa com queijo derretido.",
+      "emoji": "🧀",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/queijo-quente.jpg"
+    },
+    {
+      "id": "l02",
+      "categoria": "lanches",
+      "nome": "Queijo Quente c/ Tomate",
+      "preco": 18.0,
+      "descricao": "Pão de forma grelhado e dourado na chapa, com queijo derretido e rodelas de tomate fresco, finalizado com salsinha.",
+      "emoji": "🧀",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/queijo-quente-tomate.jpg"
+    },
+    {
+      "id": "l03",
+      "categoria": "lanches",
+      "nome": "Misto Quente / Frio",
+      "preco": 18.0,
+      "descricao": "Pão de forma prensado na chapa até dourar, com presunto e queijo derretido — o clássico misto quente crocante por fora e macio por dentro.",
+      "emoji": "🥪",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/misto-quente.jpg"
+    },
+    {
+      "id": "l04",
+      "categoria": "lanches",
+      "nome": "Bauru",
+      "preco": 18.0,
+      "descricao": "Pão francês quentinho com rosbife suculento e queijo derretido, acompanhado de tomate e pepino em conserva — o autêntico Bauru.",
+      "emoji": "🥪",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/bauru.jpg"
+    },
+    {
+      "id": "l05",
+      "categoria": "lanches",
+      "nome": "Americano",
+      "preco": 20.0,
+      "descricao": "Sanduíche americano com presunto, queijo, ovo e bacon.",
+      "emoji": "🥪",
+      "alergias": [
+        "gluten",
+        "leite",
+        "ovo"
+      ],
+      "imagem": "img/americano.jpg"
+    },
+    {
+      "id": "l06",
+      "categoria": "lanches",
+      "nome": "Hambúrguer",
+      "preco": 14.0,
+      "descricao": "Hambúrguer simples no pão.",
+      "emoji": "🍔",
+      "alergias": [
+        "gluten"
+      ],
+      "imagem": "img/hamburguer.jpg"
+    },
+    {
+      "id": "l07",
+      "categoria": "lanches",
+      "nome": "X-Burguer",
+      "preco": 18.0,
+      "descricao": "Hambúrguer com queijo.",
+      "emoji": "🍔",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/x-burguer.jpg"
+    },
+    {
+      "id": "l08",
+      "categoria": "lanches",
+      "nome": "X-Egg",
+      "preco": 20.0,
+      "descricao": "Hambúrguer com queijo e ovo.",
+      "emoji": "🍔",
+      "alergias": [
+        "gluten",
+        "leite",
+        "ovo"
+      ],
+      "imagem": "img/x-egg.jpg"
+    },
+    {
+      "id": "l09",
+      "categoria": "lanches",
+      "nome": "X-Salada",
+      "preco": 20.0,
+      "descricao": "Hambúrguer artesanal suculento no pão, com queijo derretido, alface crocante, tomate fresco e maionese da casa.",
+      "emoji": "🍔",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/x-salada.jpg"
+    },
+    {
+      "id": "l10",
+      "categoria": "lanches",
+      "nome": "X-Salada Egg",
+      "preco": 22.0,
+      "descricao": "Hambúrguer artesanal no pão brioche com queijo cheddar derretido, ovo frito de gema macia, alface e tomate — fartura total.",
+      "emoji": "🍔",
+      "alergias": [
+        "gluten",
+        "leite",
+        "ovo"
+      ],
+      "imagem": "img/x-salada-egg.jpg"
+    },
+    {
+      "id": "l11",
+      "categoria": "lanches",
+      "nome": "X-Bacon",
+      "preco": 23.0,
+      "descricao": "Hambúrguer artesanal no pão brioche com queijo cheddar, bacon crocante, alface, tomate, picles e molho especial da casa.",
+      "emoji": "🍔",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/x-bacon.jpg"
+    },
+    {
+      "id": "l15",
+      "categoria": "lanches",
+      "nome": "Filé de Frango",
+      "preco": 17.0,
+      "descricao": "Sanduíche de filé de frango grelhado.",
+      "emoji": "🐔",
+      "alergias": [
+        "gluten"
+      ],
+      "imagem": "img/file-frango.jpg"
+    },
+    {
+      "id": "l16",
+      "categoria": "lanches",
+      "nome": "Filé de Frango c/ Queijo",
+      "preco": 19.0,
+      "descricao": "Filé de frango com queijo.",
+      "emoji": "🐔",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/file-frango.jpg"
+    },
+    {
+      "id": "l17",
+      "categoria": "lanches",
+      "nome": "Filé de Frango c/ Queijo + Salada",
+      "preco": 21.0,
+      "descricao": "Filé de frango com queijo e salada.",
+      "emoji": "🐔",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/file-frango.jpg"
+    },
+    {
+      "id": "l18",
+      "categoria": "lanches",
+      "nome": "Calabresa",
+      "preco": 17.0,
+      "descricao": "Sanduíche de calabresa na chapa.",
+      "emoji": "🌶️",
+      "alergias": [
+        "gluten"
+      ],
+      "imagem": "img/calabresa.jpg"
+    },
+    {
+      "id": "l19",
+      "categoria": "lanches",
+      "nome": "Calabresa c/ Queijo",
+      "preco": 19.0,
+      "descricao": "Calabresa com queijo derretido.",
+      "emoji": "🌶️",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/calabresa-queijo.jpg"
+    },
+    {
+      "id": "l20",
+      "categoria": "lanches",
+      "nome": "Calabresa c/ Queijo + Salada",
+      "preco": 21.0,
+      "descricao": "Calabresa com queijo e salada.",
+      "emoji": "🌶️",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/calabresa-queijo-salada.jpg"
+    },
+    {
+      "id": "l21",
+      "categoria": "lanches",
+      "nome": "Pão c/ Manteiga",
+      "preco": 6.5,
+      "descricao": "Pão francês quentinho dourado na chapa, macio por dentro, generosamente regado com manteiga derretida que escorre pelo miolo.",
+      "imagem": "img/pao-manteiga.jpg",
+      "emoji": "🥖",
+      "alergias": [
+        "gluten",
+        "leite"
+      ]
+    },
+    {
+      "id": "l22",
+      "categoria": "lanches",
+      "nome": "Pão c/ Manteiga + Chapa",
+      "preco": 8.5,
+      "descricao": "Pão tostado na chapa com manteiga.",
+      "emoji": "🥖",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/pao-manteiga-chapa.jpg"
+    },
+    {
+      "id": "l23",
+      "categoria": "lanches",
+      "nome": "Pão c/ Manteiga + Requeijão",
+      "preco": 8.5,
+      "descricao": "Pão francês dourado na chapa, untado com manteiga e generosamente recheado com requeijão cremoso — macio, quentinho e irresistível.",
+      "emoji": "🥖",
+      "alergias": [
+        "gluten",
+        "leite"
+      ],
+      "imagem": "img/pao-manteiga-requeijao.jpg"
+    },
+    {
+      "id": "l24",
+      "categoria": "lanches",
+      "nome": "Pão c/ Requeijão",
+      "preco": 9.0,
+      "descricao": "Pão francês dourado e crocante, recheado generosamente com requeijão cremoso e aveludado — macio e irresistível a qualquer hora.",
+      "imagem": "img/pao-requeijao.jpg",
+      "emoji": "🥖",
+      "alergias": [
+        "gluten",
+        "leite"
+      ]
+    },
+    {
+      "id": "l25",
+      "categoria": "lanches",
+      "nome": "Pão Com Ovo",
+      "preco": 11.0,
+      "descricao": "Pão francês dourado e crocante recheado com ovo frito de gema macia, finalizado com cebolete e pimenta-do-reino — fresquinho e saboroso.",
+      "imagem": "img/pao-ovo.jpg",
+      "emoji": "🍳",
+      "alergias": [
+        "gluten",
+        "ovo"
+      ]
+    },
+    {
+      "id": "l26",
+      "categoria": "lanches",
+      "nome": "Pão Com Ovo + Salada",
+      "preco": 11.0,
+      "descricao": "Pão francês dourado recheado com ovo frito de gema macia, rúcula fresca, tomate-cereja e pepino, finalizado com cebolinha e pimenta-do-reino.",
+      "imagem": "img/pao-ovo-salada.jpg",
+      "emoji": "🍳",
+      "alergias": [
+        "gluten",
+        "ovo"
+      ]
+    },
+    {
+      "id": "r01",
+      "categoria": "refeicoes",
+      "nome": "Prato Feito - Amigão",
+      "preco": 16.5,
+      "descricao": "Prato feito base da casa: arroz soltinho, feijão caldoso e ovo frito com toque de cebolinha e pimenta — fartura a preço de cantina.",
+      "emoji": "🍚",
+      "alergias": [
+        "ovo"
+      ],
+      "imagem": "img/comercial-amigao.jpg"
+    },
+    {
+      "id": "r02",
+      "categoria": "refeicoes",
+      "nome": "Bisteca",
+      "preco": 28.0,
+      "descricao": "Suculenta bisteca bovina grelhada no ponto, com crosta dourada e sabor marcante. Acompanha arroz, feijão, batata frita crocante e salada fresca de alface e tomate.",
+      "imagem": "img/comercial-bisteca.jpg",
+      "emoji": "🥩",
+      "alergias": []
+    },
+    {
+      "id": "r03",
+      "categoria": "refeicoes",
+      "nome": "Calabresa Defumada",
+      "preco": 28.0,
+      "descricao": "Calabresa defumada fatiada grelhada na brasa, dourada e suculenta. Acompanha arroz, feijão, batata frita crocante e salada fresca.",
+      "imagem": "img/comercial-calabresa.jpg",
+      "emoji": "🌶️",
+      "alergias": []
+    },
+    {
+      "id": "r04",
+      "categoria": "refeicoes",
+      "nome": "Contratê",
+      "preco": 32.0,
+      "descricao": "Bife de contrafilé grelhado na chapa, suculento e dourado. Acompanha arroz, feijão, batata frita crocante e salada fresca de alface e tomate.",
+      "imagem": "img/comercial-contrafile.jpg",
+      "emoji": "🥩",
+      "alergias": []
+    },
+    {
+      "id": "r05",
+      "categoria": "refeicoes",
+      "nome": "Filé de Frango",
+      "preco": 28.0,
+      "descricao": "Filé de frango grelhado no ponto, suculento e dourado com marcas da chapa. Acompanha arroz, feijão, batata frita crocante e salada fresca.",
+      "imagem": "img/comercial-frango.jpg",
+      "emoji": "🐔",
+      "alergias": []
+    },
+    {
+      "id": "r06",
+      "categoria": "refeicoes",
+      "nome": "Linguiça Toscana",
+      "preco": 28.0,
+      "descricao": "Linguiça toscana grelhada, dourada e suculenta com leve tostado. Acompanha arroz, feijão, batata frita crocante e salada fresca.",
+      "imagem": "img/comercial-linguica.jpg",
+      "emoji": "🌭",
+      "alergias": []
+    },
+    {
+      "id": "r07",
+      "categoria": "refeicoes",
+      "nome": "Omelete",
+      "preco": 28.0,
+      "descricao": "Omelete dourada e macia, feita com ovos batidos na frigideira. Acompanha arroz, feijão, batata frita crocante e salada fresca.",
+      "imagem": "img/comercial-omelete.jpg",
+      "emoji": "🍳",
+      "alergias": [
+        "ovo",
+        "leite"
+      ]
+    },
+    {
+      "id": "r08",
+      "categoria": "refeicoes",
+      "nome": "Strogonoff de Frango",
+      "preco": 28.0,
+      "descricao": "Strogonoff de frango cremoso com champignon e batata palha, acompanha arroz branco soltinho. Clássico prato de cantina.",
+      "imagem": "img/comercial-strogonoff.jpg",
+      "emoji": "🍛",
+      "alergias": [
+        "leite"
+      ]
+    },
+    {
+      "id": "r09",
+      "categoria": "refeicoes",
+      "nome": "Filé de Frango à Parmegiana",
+      "preco": 28.0,
+      "descricao": "Filé de frango empanado e grelhado, coberto com molho de tomate e queijo mussarela derretido gratinado. Acompanha arroz, feijão e batata frita crocante.",
+      "imagem": "img/comercial-parmegiana.jpg",
+      "emoji": "🍗",
+      "alergias": [
+        "gluten",
+        "leite",
+        "ovo"
+      ]
+    },
+    {
+      "id": "sa1",
+      "categoria": "saladas",
+      "nome": "Salada Contratê",
+      "preco": 32.0,
+      "descricao": "Alface, tomate, pepino, cebola e contrafilé.",
+      "emoji": "🥗",
+      "alergias": []
+    },
+    {
+      "id": "sa2",
+      "categoria": "saladas",
+      "nome": "Salada Demais Opções",
+      "preco": 28.0,
+      "descricao": "Alface, tomate, pepino e cebola com proteína à escolha.",
+      "emoji": "🥗",
+      "alergias": [],
+      "imagem": "img/salada-frango.jpg"
+    }
+  ]
+}
